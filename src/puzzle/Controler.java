@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Controler {
     private Scanner s = new Scanner(System.in);
-    private int tabuleiroEntrada[] = {1, 2, 3, 4, 5, 6, 0, 7, 8};
+    private int tabuleiroEntrada[] = {1, 2, 3, 0, 5, 6, 4, 7, 8};
     private int tabuleiroObjetivo[] = {1, 2, 3, 4, 5, 6, 7, 8, 0};
 
     public Controler() {
@@ -69,26 +69,17 @@ public class Controler {
         String pathString = "{ ";
 
         for (int i = 0; i < path.size(); i++) {
-            pathString += path.get(i).getLiteral() + " - \n";
+            pathString += path.get(i).getLiteral() + " - ";
         }
-        pathString = " }";
+        pathString += " }";
 
-        System.out.print("Caminho para chegar ao resultado (em direções): " + pathString);
+        System.out.println("Caminho para chegar ao resultado (em direções): " + pathString);
         System.out.println("Nodos visitados: " + solutionData.getNodesVisited());
         System.out.println("Nodos Criados: " + solutionData.getNodesCreated());
         System.out.println("Maior tamanho da fronteira: " + solutionData.getLargestBorderSize());
         System.out.println("Tamanho do caminho: " + solutionData.getPathSize());
 
     }
-
-    private void findWithPreciseAlgo() {
-
-    }
-
-    private void findWithSimpleAlgo() {
-
-    }
-
 
 }
 
