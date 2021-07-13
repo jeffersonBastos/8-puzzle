@@ -47,10 +47,10 @@ public class Controler {
                 resolver = new AStarSimpleImpl();
                 break;
             case 3:
-                resolver = new AStarMinimumEstimateImpl();
+                resolver = new AStarDiagonalImpl();
                 break;
             case 4:
-                resolver = new AStarDiagonalImpl();
+                resolver = new AStarMinimumEstimateImpl();
                 break;
             default:
                 System.out.println("Escolha invalida");
