@@ -4,18 +4,18 @@ import puzzle.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public abstract class PathResolver {
 
     private int tabuleiroEntrada[];
     private int tabuleiroObjetivo[];
     private ArrayList<Node> nodesVisited;
-    private QueueNext border;
+    private ArrayList<Node> border;
 
     public PathResolver() {
         this.nodesVisited = new ArrayList<>();
-        nodesVisited = new ArrayList<>();
-        border = new QueueNext();
+        this.border = new ArrayList<>();
     }
 
     public PathResolver setInput(int[] input) {
@@ -67,15 +67,15 @@ public abstract class PathResolver {
                 printTabuleiro(currentNode.getArray());
             } else {
                 nodesVisited.add(currentNode);
-                generateNextNodes(currentNode);
+                generateNextNodes(currentNode);//adicionando em border por referência
 
                 if (border.size() > solutionData.getLargestBorderSize())
                     solutionData.setLargestBorderSize(border.size());
 
-                // teria que fazer o sort no treco do border (da para usar um array list)
-//                border.sort(Comparator.comparingInt(Nodo::getCusto)); algo assim para A*
+                border.sort(Comparator.comparingInt(Node::getCost));
 
-                currentNode = border.getNext();
+                currentNode = border.get(0);
+                border.remove(0);
             }
         }
 
@@ -204,11 +204,12 @@ public abstract class PathResolver {
 
     }
 
+    //poderia receber o nodo objetivo tbm
     public abstract Integer calculateCost(Node node);
 
     private void addNodeToBorder(Node node) {
         if (!isInList(node.getArray())) {
-            border.addNode(node);
+            border.add(node);
         }
     }
 
