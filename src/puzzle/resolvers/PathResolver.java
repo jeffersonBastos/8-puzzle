@@ -208,13 +208,13 @@ public abstract class PathResolver {
     public abstract Integer calculateCost(Node node);
 
     private void addNodeToBorder(Node node) {
-        if (!isInList(node.getArray())) {
+        if (!isInList(node.getArray(), nodesVisited) && !isInList(node.getArray(), border)) {
             border.add(node);
         }
     }
 
-    private boolean isInList(int[] currentNode) {//hash melhoraria performance
-        for (Node item : nodesVisited) {
+    private boolean isInList(int[] currentNode, ArrayList<Node> list) {//hash melhoraria performance
+        for (Node item : list) {
             if (!Arrays.equals(item.getArray(), currentNode)) {
                 continue;
             }

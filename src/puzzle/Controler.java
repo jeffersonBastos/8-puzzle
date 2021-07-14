@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Controler {
     private Scanner s = new Scanner(System.in);
         private int tabuleiroEntrada[] = {2, 3, 6, 1, 0, 5, 4, 7, 8};
+//        private int tabuleiroEntrada[] = {2, 3, 6, 0, 1, 5, 4, 7, 8};
 //    private int tabuleiroEntrada[] = {2, 3, 6, 1, 0, 5, 4, 7, 8}; //exemplo onde o A* simples perde feio para o completo (inclusive perde para o custo uniforme)
 //    private int tabuleiroEntrada[] = {1, 2, 3, 0, 5, 6, 4, 7, 8}; //exemplo onde o A* simples perde levemente para o completo
     private int tabuleiroObjetivo[] = {1, 2, 3, 4, 5, 6, 7, 8, 0};
